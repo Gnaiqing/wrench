@@ -510,7 +510,8 @@ class BaseTorchClassModel(BaseClassModel, BaseTorchModel, ABC):
         return True
 
     def _calc_valid_metric(self, **kwargs):
-        with autocast(enabled=get_amp_flag()):
+        #with autocast(enabled=get_amp_flag()):
+        with torch.amp.autocast('cuda', enabled=get_amp_flag()):
             probas = self.predict_proba(self.valid_dataloader, **kwargs)
         return self.metric_fn(self.y_valid, probas)
 

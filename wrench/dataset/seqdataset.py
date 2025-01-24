@@ -163,7 +163,8 @@ class BaseSeqDataset:
 
 import nltk
 from nltk.tokenize import word_tokenize, sent_tokenize
-from tokenizations import get_alignments
+from spacy_alignments import get_alignments
+# from tokenizations import get_alignments
 from transformers import AutoTokenizer, AutoModel
 
 
